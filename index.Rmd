@@ -1,0 +1,19 @@
+---
+title: "Analis de datos de Covid19 de Costa Rica"
+author: "Rebeca Céspedes Serrano"
+date: '2022-05-12'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Presentación
+Este documento presenta varios gráficos estadísticos de los datos de COVID-19 en Costa Rica publicados por el Ministerio de Salud en <https://geovision.uned.ac.cr/oges/>. Los gráficos han sido generados con funciones del paquete base del lenguaje de programación R.
+
+El código fuente de este documento está disponible en <https://github.com/gf0604-procesamientodatosgeograficos/2022-i-analisis-covid-basico/blob/main/index.Rmd>.
+
+
+
+
