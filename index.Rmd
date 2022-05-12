@@ -14,6 +14,58 @@ Este documento presenta varios gráficos estadísticos de los datos de COVID-19 
 
 El código fuente de este documento está disponible en <https://github.com/gf0604-procesamientodatosgeograficos/2022-i-analisis-covid-basico/blob/main/index.Rmd>.
 
+## Entradas 
 
+## Cargo de datos 
+
+```{r carga-datos}
+covid <- read.csv("05_10_22_CSV_GENERAL.csv", sep = ";")
+
+```
+
+## Procesamiento 
+options(scipen = 7)
+
+### Curacion de datos 
+```{r conversion-fecha}
+covid$FECHA <- as.Date(covid$FECHA, format = "%d/%m/%Y")
+```
+
+
+
+## Salidas
+
+### Graficos 
+
+##### Casos acumulados 
+
+#### positivos 
+
+```{r}
+plot(x = covid$FECHA, 
+     y = covid$positivos,
+     type = "l",
+     xaxt = "n",
+     yaxt = "n",
+     main = "Casos positivos acumulados de covid19 en Costa Rica",
+     xlab = "Fecha",
+     ylab = "Casos positivos")
+
+# Formato del eje X
+axis(side = 1,
+     covid$FECHA,
+     tick = FALSE,
+     format(covid$FECHA, "%m-%y"),
+     cex.axis = .7)
+
+# Formato del eje Y
+axis(
+  side = 2,
+  covid$positivos,
+  labels = TRUE,  
+  at = seq(0, 1000000, by = 200000),
+  cex.axis = .7
+)
+```
 
 
