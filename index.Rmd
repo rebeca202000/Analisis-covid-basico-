@@ -131,11 +131,6 @@ legend(
   lty = 1,
   cex = 0.7)
 
-
-
-
-
-
 # Formato del eje X
 axis(side = 1,
      covid$FECHA,
@@ -154,11 +149,162 @@ axis(
 ```
 
 
+#### Casos diarios
 
 
+#####Positivos 
+
+```{r casos-nuevos-positivos}
+barplot(
+        height = covid$nue_posi,
+        names.arg=format(covid$FECHA, "%Y"),
+         ann = FALSE, 
+        bty = "n", 
+        tck = 0, 
+        xaxt = "n",
+        space = 1,
+        main="Casos positivos por día",
+        xlab = "Fecha",
+        ylab = "Casos positivos",
+        col = "blue"
+)
+
+# Fechas minima y máxima
+x_min <- min(covid$FECHA)
+x_max <- max(covid$FECHA)
+
+# Formato del eje X
+axis(
+  side = 1,
+  at = match(seq(as.Date(x_min), x_max, "years"), covid$FECHA) * (1 + 1),
+  labels = format(seq(as.Date(x_min), x_max, "years"), "%Y"),
+  lwd = 0)
 
 
+```
 
+
+#####fallecidos
+
+```{r casos-nuevos-fallecidos}
+barplot(
+        height = covid$nue_falleci,
+        names.arg=format(covid$FECHA, "%Y"),
+         ann = FALSE, 
+        bty = "n", 
+        tck = 0, 
+        xaxt = "n",
+        space = 1,
+        main="Casos fallecidos por día",
+        xlab = "Fecha",
+        ylab = "Casos fallecidos",
+        col = "blue"
+)
+
+# Fechas minima y máxima
+x_min <- min(covid$FECHA)
+x_max <- max(covid$FECHA)
+
+# Formato del eje X
+axis(
+  side = 1,
+  at = match(seq(as.Date(x_min), x_max, "years"), covid$FECHA) * (1 + 1),
+  labels = format(seq(as.Date(x_min), x_max, "years"), "%Y"),
+  lwd = 0)
+
+
+```
+###Ejercicios 
+
+### total de casos hospitalizados 
+
+
+```{r casos-nuevos-hospitalizados}
+barplot(
+        height = covid$nue_hospi,
+        names.arg=format(covid$FECHA, "%Y"),
+         ann = FALSE, 
+        bty = "n", 
+        tck = 0, 
+        xaxt = "n",
+        space = 1,
+        main="Casos hospitalizados por día",
+        xlab = "Fecha",
+        ylab = "Casos hospitalizados",
+        col = "blue"
+)
+
+# Fechas minima y máxima
+x_min <- min(covid$FECHA)
+x_max <- max(covid$FECHA)
+
+# Formato del eje X
+axis(
+  side = 1,
+  at = match(seq(as.Date(x_min), x_max, "years"), covid$FECHA) * (1 + 1),
+  labels = format(seq(as.Date(x_min), x_max, "years"), "%Y"),
+  lwd = 0)
+
+
+```
+
+## UCI EN SALON 
+
+```{r casos-nuevos-hospitalizados}
+barplot(
+        height = covid$nue_salon,
+        names.arg=format(covid$FECHA, "%Y"),
+         ann = FALSE, 
+        bty = "n", 
+        tck = 0, 
+        xaxt = "n",
+        space = 1,
+        main="Casos en salon por día",
+        xlab = "Fecha",
+        ylab = "Casos en salon",
+        col = "blue"
+)
+
+# Fechas minima y máxima
+x_min <- min(covid$FECHA)
+x_max <- max(covid$FECHA)
+
+# Formato del eje X
+axis(
+  side = 1,
+  at = match(seq(as.Date(x_min), x_max, "years"), covid$FECHA) * (1 + 1),
+  labels = format(seq(as.Date(x_min), x_max, "years"), "%Y"),
+  lwd = 0)
+
+plot(
+  covid$FECHA,
+  covid$UCI,
+  type = "l",
+  xaxt = "n",
+  yaxt = "n",
+  main = "Casos EN UCI",
+  xlab = "Fecha",
+  ylab = "Casos EN UCI"
+)
+
+# Formato del eje X
+axis(side = 1,
+     covid$FECHA,
+     tick = FALSE,
+     format(covid$FECHA, "%m-%y"),
+     cex.axis = .7)
+
+# Formato del eje Y
+axis(
+  side = 2,
+  covid$positivos,
+  labels = TRUE,  
+  at = seq(0, 1000000, by = 200000),
+  cex.axis = .7
+)
+```
+
+```
 
 
 
