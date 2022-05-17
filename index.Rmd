@@ -152,7 +152,7 @@ axis(
 #### Casos diarios
 
 
-#####Positivos 
+##### Positivos 
 
 ```{r casos-nuevos-positivos}
 barplot(
@@ -184,7 +184,7 @@ axis(
 ```
 
 
-#####fallecidos
+##### Fallecidos
 
 ```{r casos-nuevos-fallecidos}
 barplot(
