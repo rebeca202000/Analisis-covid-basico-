@@ -40,7 +40,7 @@ covid$FECHA <- as.Date(covid$FECHA, format = "%d/%m/%Y")
 
 ##### Casos acumulados 
 
-#### positivos 
+## Positivos 
 
 ```{r}
 plot(x = covid$FECHA, 
@@ -69,7 +69,7 @@ axis(
 )
 ```
 
-#### fallecidos
+## Fallecidos
 
 ```{r casos-fallecidos-acumulados}
 plot(
@@ -149,10 +149,10 @@ axis(
 ```
 
 
-#### Casos diarios
+# Casos diarios
 
 
-##### Positivos 
+## Positivos 
 
 ```{r casos-nuevos-positivos}
 barplot(
@@ -184,7 +184,7 @@ axis(
 ```
 
 
-##### Fallecidos
+## Fallecidos
 
 ```{r casos-nuevos-fallecidos}
 barplot(
@@ -216,7 +216,7 @@ axis(
 ```
 ###Ejercicios 
 
-### total de casos hospitalizados 
+## Total de casos hospitalizados 
 
 
 ```{r casos-nuevos-hospitalizados}
@@ -248,45 +248,20 @@ axis(
 
 ```
 
-## UCI EN SALON 
+## UCI y en salon
 
-```{r casos-nuevos-hospitalizados}
-barplot(
-        height = covid$nue_salon,
-        names.arg=format(covid$FECHA, "%Y"),
-         ann = FALSE, 
-        bty = "n", 
-        tck = 0, 
-        xaxt = "n",
-        space = 1,
-        main="Casos en salon por día",
-        xlab = "Fecha",
-        ylab = "Casos en salon",
-        col = "blue"
-)
-
-# Fechas minima y máxima
-x_min <- min(covid$FECHA)
-x_max <- max(covid$FECHA)
-
-# Formato del eje X
-axis(
-  side = 1,
-  at = match(seq(as.Date(x_min), x_max, "years"), covid$FECHA) * (1 + 1),
-  labels = format(seq(as.Date(x_min), x_max, "years"), "%Y"),
-  lwd = 0)
-
+```{r casos en salon y UCI}
 plot(
   covid$FECHA,
-  covid$UCI,
+  covid$salon,
   type = "l",
   xaxt = "n",
   yaxt = "n",
-  main = "Casos EN UCI",
+  main = "Casos en salon y en UCI ",
   xlab = "Fecha",
-  ylab = "Casos EN UCI"
+  ylab = "Casos en salon y en UCI "
 )
-
+lines(covid$FECHA, covid$UCI, col= "red")
 # Formato del eje X
 axis(side = 1,
      covid$FECHA,
@@ -297,9 +272,9 @@ axis(side = 1,
 # Formato del eje Y
 axis(
   side = 2,
-  covid$positivos,
+  covid$salon,
   labels = TRUE,  
-  at = seq(0, 1000000, by = 200000),
+  at = seq(0, 1000, by = 250),
   cex.axis = .7
 )
 ```
